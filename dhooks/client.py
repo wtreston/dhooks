@@ -374,10 +374,11 @@ class Webhook:
                 raise ValueError("Bad method: {}".format(method))
 
             if resp.status_code == 429:  # Too many request
-                time.sleep(resp.json()['retry_after'] / 1000.0)
-                if file is not None:
-                    file.seek()
-                continue
+                # time.sleep(resp.json()['retry_after'] / 1000.0)
+                # if file is not None:
+                #     file.seek()
+                # continue
+                raise Exception
             else:
                 if file is not None:
                     file.close()
